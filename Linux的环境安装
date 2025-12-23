@@ -1,0 +1,31 @@
+/*  一、对于Ubuntu/Debian系统
+1、安装基本的编译工具
+命令：sudo apt install build-essential -y
+包含基本的gcc/g++编译器和make工具
+
+2.验证安装，检查对应的编译工具版本
+i) g++ --version  //检查g++版本
+ii）gcc --version //检查gcc版本
+iii) make --version //检查make版本
+
+3.安装额外的实用工具
+i) sudo apt install gdb valgrind -y  //安装gdb调试工具
+ii）sudo apt install cmake -y   //安装cmake工具
+
+4.创建测试程序验证环境
+创建测试文件test.cpp
+#include <iostream>
+
+int main(){
+  std::cout<<"C++编译环境配置成功！"<<std::endl;
+  std::cout<<"C++版本："<<__cplusplus<<std::endl;
+  return 0;
+}
+
+5.编译测试程序
+方法一：直接使用g++
+g++ test.cpp -o test     //将源文件编译成可执行文件
+./test                   //执行文件
+方法二： 使用Makefile 
+方法三： 使用CMake
+*/
