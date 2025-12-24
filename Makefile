@@ -20,8 +20,38 @@ hello:
 
 2.变量定义
 #简单变量
-CC = gcc
-CFLAGS = -wall -o2
+CC = g++
+DD = test.c
 #使用变量
-program:main.c
-  $(CC) $(CFLAGS) -o program main.c
+test:test.c
+  $(CC) $(DD) -o test
+
+3.自动变量
+$@   #目标文件名
+$<   #第一个依赖的文件名
+$^   #所有依赖的文件
+$?   #比目标文件新的依赖文件列表
+$*   #匹配通配符的部分
+test:test.cc
+	$(CC) $? -o $@
+
+三、核心功能
+1.1通配符
+# * - 匹配任意数量字符
+SOURCES = *.c      #匹配所有.c文件
+HEARDS = *.h       #匹配所有.h文件
+# ？ - 匹配单个字符
+TEST_FILES = test?.cc    #匹配test1.c,test2.c,但是不匹配test10.c
+# [...] - 匹配括号内的任意字符
+SPECIAL = file[123].c    #匹配file1.c,file2.c,file3.c
+RANGES = chap[1-9].c     #匹配chap1.c 到 chap9.c
+
+1.2通配符的两种使用时机
+#重要区别：立即展开VS延迟展开
+IMMEDIATE := *.c   #  :=代表着在赋值时立即展开，得到文件
+DEFERRED = *.c     #  ：代表着在使用的时候展开，目前保持着“*.c”字符串
+
+1.3 wildcard函数
+# 问题：
+2.
+
